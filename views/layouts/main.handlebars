@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta name="Description" content="A ColdFusion Blog Aggregator" />
+<meta name="Keywords" content="coldfusion,blogging,coldfusion bloggers" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="Distribution" content="Global" />
+<meta name="Robots" content="index,follow" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feedproxy.google.com/ColdfusionbloggersorgFeed" />
+<link rel="stylesheet" href="images/Techmania.css" type="text/css" />
+<link rel="shortcut icon" href="/images/icon_016.png">
+<title>{{title}}</title>
+<script src="/js/jquery-2.1.1.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#search").on("submit", function(e) {
+		
+		var searchvalue = $.trim($("#search_query").val());
+		if(searchvalue === '') return false;
+		
+	});
+})
+</script>
+</head>
+
+<body>
+
+<!-- wrap starts here -->
+<div id="wrap">
+
+		<div id="header">
+			<!--
+			<div id="loadingmsg" style="position:absolute;top:30px;left:15px;float:left;"><img src="/images/new-ajax-loader.gif" style="border:none"></div>
+			-->
+			<h1 id="logo-text">coldfusion<span class="gray">Bloggers</span></h1>
+			<h2 id="slogan">{{slogan}}</h2>
+
+			<div id="header-tabs">
+				<ul>
+					<li {{{selected "index" page}}}><a href="/"><span>Home</span></a></li>
+					<li {{{selected "feeds" page}}}><a href="/feeds"><span>Feeds</span></a></li>
+					<li><a href="##" id="contactLink"><span>Contact</span></a></li>
+					<li {{{selected "faqs" page}}}><a href="/faq"><span>FAQ</span></a></li>
+				</ul>
+			</div>
+
+		</div>
+
+	  <!-- content-wrap starts here -->
+	  <div id="content-wrap">
+
+	  		<div id="main">
+
+
+
+{{{body}}}
+
+
+
+	  		</div>
+
+	  		<div id="sidebar">
+
+
+				<h1>Search</h1>
+				<form method="post" id="search" action="/">
+					<p>
+					<input type="text" name="search_query" id="search_query" class="textbox">
+					<input name="search" class="searchbutton" value="Search" type="submit" />
+					</p>
+				</form>
+
+				<p/>
+				<script type="text/javascript"><!--
+				google_ad_client = "pub-1736437642005360";
+				google_alternate_color = "FFFFFF";
+				google_ad_width = 200;
+				google_ad_height = 200;
+				google_ad_format = "200x200_as";
+				google_ad_type = "text_image";
+				//2007-08-13: cfbloggers
+				google_ad_channel = "2920242129";
+				google_color_border = "6699CC";
+				google_color_bg = "003366";
+				google_color_link = "FFFFFF";
+				google_color_text = "AECCEB";
+				google_color_url = "AECCEB";
+				google_ui_features = "rc:10";
+				//-->
+				</script>
+				<script type="text/javascript"
+				  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+				</script>
+				</p>
+
+
+				<h1>About</h1>
+				<p>
+				ColdFusionBloggers.org aggregates nearly 200 different ColdFusion-focused blogs.
+				</p>
+
+				<a class="twitter-timeline" href="https://twitter.com/CFOverflow" data-widget-id="299286251847163904">Tweets by @CFOverflow</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+
+			</div>
+
+		<!-- content-wrap ends here -->
+		</div>
+
+		<div id="footer">
+
+			<span id="footer-left">
+				Created by <strong><a href="http://www.raymondcamden.com">Raymond Camden</a></strong> |
+				Design by: <strong><a href="http://www.styleshout.com/">styleshout</a></strong>
+			</span>
+
+			<span id="footer-right">
+				<a href="/">Home</a> |  <a href="http://feedproxy.google.com/ColdfusionbloggersorgFeed">RSS Feed</a>
+			</span>
+
+		</div>
+
+<!-- wrap ends here -->
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-70863-11");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body>
+</html>

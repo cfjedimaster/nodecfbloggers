@@ -1,0 +1,37 @@
+{{#if search}}
+	<h2>Searched for {{search}} ({{total}} Entries)</h2>
+	<p><i>Note - search results are capped at 50.</i></p>
+{{else}}
+	<h2>All Entries ({{total}} Entries)</h2>
+</cfif>
+{{/if}}
+
+
+{{#each entries}}
+	<p style="padding: 5px; {{#if_even @index}}background-color: #dbdbdb{{/if_even}}">
+	<a href="{{url}}"><b>{{title}}</b></a> <a href="{{url}}" target="_new">[+]</a><br />
+	<b><a href="{{blog.url}}">{{blog.name}}</a> | {{formatDate created}} {{formatCategories categories}}</b><br />
+	{{truncate content}}
+	</p>
+{{/each}}
+
+
+{{#if noentries}}
+<p>
+Sorry, but I ain't got nothing to show...
+</p>
+{{/if}}
+
+<p align="right">
+{{#if prev}}
+	<a href="{{prevlink}}">Previous</a>
+{{else}}
+	Previous
+{{/if}}
+/
+{{#if next}}
+	<a href="{{nextlink}}">Next</a>
+{{else}}
+Next
+{{/if}}
+</p>

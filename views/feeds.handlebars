@@ -1,0 +1,20 @@
+
+<style>
+#feedList a {
+	text-decoration: underline;
+}
+</style>
+
+<h2>List of Blogs ({{total}} Blogs)</h2>
+
+<p>
+Here is the complete and total list of blogs in use here. 
+<!--You can also access the list as an <a href="opml.cfm">OPML</a> feed. -->
+</p>
+
+{{#each feeds}}
+	<p>
+	<a href="{{this.url}}">{{this.name}}</a><br/>
+	{{this.description}}
+	</p>
+{{/each}}
