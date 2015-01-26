@@ -16,7 +16,8 @@
     "mongoose": "^3.8.17",
     "rss": ">=0.0.4",
 	"cron":"*",
-	"feedparser":"*"
+	"feedparser":"*",
+	"request":"*"
   },
   "devDependencies": {
   }

@@ -30,9 +30,6 @@ $(document).ready(function() {
 <div id="wrap">
 
 		<div id="header">
-			<!--
-			<div id="loadingmsg" style="position:absolute;top:30px;left:15px;float:left;"><img src="/images/new-ajax-loader.gif" style="border:none"></div>
-			-->
 			<h1 id="logo-text">coldfusion<span class="gray">Bloggers</span></h1>
 			<h2 id="slogan">{{slogan}}</h2>
 
@@ -40,7 +37,7 @@ $(document).ready(function() {
 				<ul>
 					<li {{{selected "index" page}}}><a href="/"><span>Home</span></a></li>
 					<li {{{selected "feeds" page}}}><a href="/feeds"><span>Feeds</span></a></li>
-					<li><a href="##" id="contactLink"><span>Contact</span></a></li>
+					<li {{{selected "contact" page}}}><a href="/contact"><span>Contact</span></a></li>
 					<li {{{selected "faqs" page}}}><a href="/faq"><span>FAQ</span></a></li>
 				</ul>
 			</div>

@@ -160,6 +160,13 @@ app.all('/', function(req, res) {
 	}
 });
 
+app.get('/contact', function(req, res) {
+	res.render('contact', {title:"Contact", page:"contact"});
+});
+app.get('/contactsent', function(req, res) {
+	res.render('contactsent', {title:"Contact Received", page:"contact"});
+});
+
 app.get('/faq', function(req, res) {
 	res.render('faq', {title:"FAQ", page:"faqs"});
 });
@@ -247,10 +254,11 @@ app.get('/rss', function(req, res) {
 
 /* check feeds */
 var cron = require('cron');
-var cronJob = cron.job('*/10 * * * * *', function() {
-	console.info('cron job complete');
+var cronJob = cron.job('0 * * * *', function() {
+	aggregator.process();
+	console.log('cron job complete');
 });
-//cronJob.start();
+cronJob.start();
 /* used to test manually...
 app.get('/process', function(req, res) {
 	aggregator.process();
