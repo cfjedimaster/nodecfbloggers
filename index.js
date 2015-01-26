@@ -134,7 +134,12 @@ app.all('/', function(req, res) {
 		var start = query.start?parseInt(query.start,10):0;
 
 		if(start < 0) start = 0;
+
 		var size = 20;
+		if(query.perpage) {
+			size = parseInt(query.perpage, 10);
+			if(size < 1 || size > 250) size=20;
+		}
 		Entry.getEntries(start, size, function(err, result) {
 			var prev = start > 0;
 			var next = start+size < result.count;
@@ -149,6 +154,7 @@ app.all('/', function(req, res) {
 				nextlink = "/?start="+nextStart;
 			}
 			res.render('index', {
+				title:"ColdFusion Bloggers",
 				entries:result.entries, 
 				total:result.count, 
 				prev:prev, 
@@ -225,13 +231,14 @@ app.get('/rss', function(req, res) {
 	} else {
 	
 		var feed = new RSS({
-			title: 'CFLib RSS Feed',
-			description: 'The following are the 10 latest UDFs released at CFlib.org',
-			feed_url: 'http://www.cflib.org/rss',
-			site_url: 'http://www.cflib.org',
+			title: 'ColdFusion Bloggers RSS Feed',
+			description: 'The following are the 10 latest entries aggregated at ColdFusion Bloggers.',
+			feed_url: 'http://www.coldfusionbloggers.org/rss',
+			site_url: 'http://www.coldfusionbloggers.org',
 			author: 'Raymond Camden'
 		});
 
+		/*
 		UDF.getLatest(function(data) {
 			data.forEach(function(itm) {
 				feed.item({
@@ -247,7 +254,23 @@ app.get('/rss', function(req, res) {
 			app.set('rssXML',feed.xml());
 			res.send(app.get('rssXML'));		
 		}, 10);
-
+		*/
+		Entry.getEntries(0, 10, function(err, result) {
+				//entries:result.entries, 
+			result.entries.forEach(function(itm) {
+				feed.item({
+					title:  itm.title,
+					description: itm.content,
+					url: itm.url, 
+					date: itm.posted
+				});
+				
+			});
+			res.set('Content-Type','application/rss+xml');
+			app.set('rssXML',feed.xml());
+			res.send(app.get('rssXML'));		
+		});
+		
 		
 	}
 });
