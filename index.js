@@ -166,6 +166,10 @@ app.all('/', function(req, res) {
 	}
 });
 
+app.get('/index.cfm', function(req, res) {
+	return res.redirect('/');
+});
+
 app.get('/contact', function(req, res) {
 	res.render('contact', {title:"Contact", page:"contact"});
 });
