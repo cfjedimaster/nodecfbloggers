@@ -261,6 +261,7 @@ app.get('/rss', function(req, res) {
 				feed.item({
 					title:  itm.title,
 					description: itm.content,
+					author:itm.blog.name,
 					url: itm.url, 
 					date: itm.posted
 				});
