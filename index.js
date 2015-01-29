@@ -242,23 +242,6 @@ app.get('/rss', function(req, res) {
 			author: 'Raymond Camden'
 		});
 
-		/*
-		UDF.getLatest(function(data) {
-			data.forEach(function(itm) {
-				feed.item({
-					title:  itm.name,
-					description: itm.description,
-					url: 'http://www.cflib.org/udf/'+itm.name, 
-					author: itm.author,
-					date: itm.lastUpdated
-				});
-				
-			});
-			res.set('Content-Type','application/rss+xml');
-			app.set('rssXML',feed.xml());
-			res.send(app.get('rssXML'));		
-		}, 10);
-		*/
 		Entry.getEntries(0, 10, function(err, result) {
 				//entries:result.entries, 
 			result.entries.forEach(function(itm) {
@@ -284,6 +267,8 @@ app.get('/rss', function(req, res) {
 var cron = require('cron');
 var cronJob = cron.job('0 * * * *', function() {
 	aggregator.process();
+	//in theory we may not add anything, but clear the cache anyway
+	app.set('rssXML','');
 	console.log('cron job complete');
 });
 cronJob.start();
