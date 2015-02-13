@@ -11,7 +11,7 @@
 	<p style="padding: 5px; {{#if_even @index}}background-color: #dbdbdb{{/if_even}}">
 	<a href="{{url}}"><b>{{title}}</b></a> <a href="{{url}}" target="_new">[+]</a><br />
 	<b><a href="{{blog.url}}">{{blog.name}}</a> | {{formatDate created}} {{formatCategories categories}}</b><br />
-	{{truncate content}}
+	{{{truncate content}}}
 	</p>
 {{/each}}
 

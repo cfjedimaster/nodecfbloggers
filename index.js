@@ -272,7 +272,8 @@ var cronJob = cron.job('0 * * * *', function() {
 	console.log('cron job complete');
 });
 cronJob.start();
-/* used to test manually...
+// used to test manually...
+/*
 app.get('/process', function(req, res) {
 	aggregator.process();
 	res.send('<p>test</p>');
